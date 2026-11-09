@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="theme-color" content="#203d55"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="application-name" content="東京地理"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="apple-touch-icon" href="./icon-192.png"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>東京地理｜施設・道路・交差点をつなげて覚える</title>
+<title>東京地理｜北上固定・暗記トレーニング</title>
 <style>
 :root{--ink:#1b2b3a;--muted:#718092;--navy:#203d55;--blue:#226fb2;--teal:#128174;--red:#be544c;--line:#d9e2e7;--bg:#f4f7f8;--wash:#eaf1f5;--paper:white;--radius:14px}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif}
@@ -15,6 +15,31 @@ section{display:none}section.active{display:block}.intro{display:flex;align-item
 .exam-head{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}.sheet{padding:16px 18px;margin-top:12px}.examrow{display:grid;grid-template-columns:32px 1fr 100px;gap:10px;align-items:start;padding:13px 1px;border-bottom:1px solid #e9eef1}.examrow:last-child{border-bottom:0}.examrow .index{font-size:12px;color:#9aa7b0;padding-top:4px}.question{font-size:14px;font-weight:680;line-height:1.8}.pick{display:flex;gap:4px}.pick button{height:39px;width:44px;border:1px solid #ccdae2;background:#fff;border-radius:8px;font-size:20px;font-weight:800;color:#668191}.pick button.yes{background:#e8f6f2;color:#087366;border-color:#6ebba7}.pick button.no{background:#fff0ed;color:#a94239;border-color:#d69c92}.fixinput{border:1px solid #d7e0e7;border-radius:6px;margin-top:7px;padding:7px 9px;width:min(100%,460px);font-size:12px}.feedback{background:#f4f8f9;padding:10px 12px;border-radius:8px;font-size:12px;margin-top:9px;line-height:1.8;color:#445f6e}.feedback.good{background:#e9f6f0;color:#12685d}.feedback.bad{background:#fff3f0;color:#9c4c43}.footbar{border-top:1px solid #e7edf1;padding:14px 17px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.score{font-weight:900;font-size:24px}.score.pass{color:#087d70}.score.fail{color:#ba554b}
 .lookup-grid{display:grid;grid-template-columns:330px 1fr;gap:13px}.lookup-items{padding:10px;max-height:65vh;overflow:auto}.tagline{color:#758697;font-size:11px}.footer{font-size:11px;color:#82919e;text-align:center;padding:28px 0}.empty{color:#9aa8b4;padding:20px 6px;text-align:center;font-size:12px}.stat{font-size:12px;border:1px solid #d5e3e9;background:#f4f9fb;border-radius:10px;padding:11px 13px;display:flex;justify-content:space-between;gap:12px}.stat b{font-size:18px;color:#155d81}.success{color:#078171;font-weight:800}.fail{color:#bb5148;font-weight:800}.notice{padding:11px 13px;border:1px solid #dbe7ee;background:#f5fafc;color:#607d8e;border-radius:9px;font-size:12px}
 @media(max-width:1120px){.train-grid{grid-template-columns:220px 1fr}.aside{grid-column:2}.top-right{display:none}}@media(max-width:750px){.top{padding:8px 10px;display:block;position:static}.logo{padding:4px 8px 10px}.tabs{gap:0}.tabs button{padding:9px 11px;font-size:12px}.wrap{padding:14px 10px 30px}.intro h1{font-size:20px}.train-grid,.road-grid,.lookup-grid{display:block}.side{max-height:none;margin-bottom:11px}.side .list{grid-template-columns:1fr 1fr;max-height:210px;overflow:auto}.side .item{padding:8px}.big{padding:13px}.hero-name{font-size:24px}.aside{margin-top:12px}.figure svg{max-height:none}.exam-head{grid-template-columns:1fr 1fr}.exam-head button{grid-column:1/-1}.examrow{grid-template-columns:23px 1fr 90px;gap:5px}.examrow .question{font-size:13px}.pick button{width:37px;height:37px}.road-list{max-height:210px;grid-template-columns:repeat(2,1fr);margin-bottom:12px}.lookup-items{max-height:240px;margin-bottom:12px}.hero-sub{font-size:11px}}
+
+/* v2: deliberate recall, north-up graphic, practice ergonomics */
+.toggle-locations{display:none;margin-top:8px}
+@media(max-width:750px){.toggle-locations{display:block}.side .list{display:none!important}.side.expanded .list{display:grid!important}.side{padding:13px}.side .category-set{margin-bottom:8px}}
+:root{--bg:#f5f7f9;--navy:#172f43;--blue:#23699f;--teal:#0d8578}
+.intro h1{letter-spacing:-.045em}.figure{border-color:#c7dbe6;background:#f3f8fa}
+.figure svg{max-height:420px}.figure-note{display:flex;gap:7px;align-items:center;line-height:1.7}
+.figure-note b{color:#174b67}.north-badge{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border:1px solid #b8d0dd;background:#fff;border-radius:20px;padding:2px 9px;font-weight:850;color:#155679}
+.answer.covered{min-height:72px;display:flex;align-items:center;justify-content:center;background:#f3f7fa;border:1px dashed #b7cbd6;color:#526f80;font-size:14px;font-weight:750}
+.answer{min-height:72px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:21px}
+.recall-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.recall-actions #coverAnswer{font-size:15px;min-height:47px;flex:1 1 170px}
+.recall-actions #hintBtn{min-height:47px}
+.recall-actions #knowBtn,.recall-actions #missBtn{min-height:44px;flex:1}
+.practice-hint{border:1px solid #e4ddbd;background:#fffaf0;color:#705e26;padding:10px 12px;margin:10px 0 0;border-radius:10px;font-size:13px;font-weight:700}
+.practice-hint[hidden],.locked-panel[hidden],.relations[hidden],.aside-info[hidden],#comparisons[hidden]{display:none!important}
+.locked-panel{font-size:12px;color:#668092;background:#f5f9fa;border-radius:9px;padding:12px;margin:10px 0;line-height:1.7}
+.recall-lock{display:flex;align-items:center;gap:8px;color:#446c81}
+.north-example{font-size:11px;color:#55758a;margin-top:8px}
+.atlas-shell{border:1px solid #cbdfe8;background:#f4f8fa;border-radius:12px;margin:13px 0;overflow:hidden;position:relative}
+.atlas-shell svg{width:100%;height:auto;display:block;max-height:540px}
+.atlas-note{padding:8px 11px;font-size:11px;color:#5f7889;background:#eaf3f6;line-height:1.7}
+.quick-guide{margin-bottom:12px;padding:10px 14px;background:#eaf5f5;border:1px solid #b9dcdb;border-radius:10px;font-size:12px;color:#236967;line-height:1.7}
+.shortcut-info{color:#79909d;font-size:11px;margin-top:7px}
+@media(max-width:750px){.answer{font-size:18px}.recall-actions{gap:7px}.figure svg{max-height:none}.quick-guide{font-size:11px}.shortcut-info{display:none}}
 
 /* Android installable app refinements */
 :root{color-scheme:light}
@@ -56,13 +81,13 @@ section{display:none}section.active{display:block}.intro{display:flex;align-item
 </div>
 
 <section class="active" id="study"><div class="intro"><div><h1>１つずつ、つながりを覚える。</h1><p>施設の前の通りと、通り同士の交差点だけを繰り返します。区名暗記は最小限にしています。</p></div><span class="pill" id="studystat">学習 0</span></div>
-<div class="train-grid">
-<div class="panel side"><div class="section-title">学習する対象</div><div class="category-set"><button class="btn active" data-kind="facility">施設 → 通り</button><button class="btn" data-kind="junction">交差点 → 道</button><button class="btn" data-kind="pair">２本の道 → 交差点</button><button class="btn" data-kind="weak">苦手だけ</button></div><input class="search" id="studySearch" placeholder="施設・道路・交差点を検索"><div class="row" style="margin-top:10px"><button class="btn small" id="randomItem">ランダム出題</button><button class="btn small" id="nextItem">次へ</button></div><div class="list" id="studyList"></div></div>
-<div class="panel big"><div class="row" style="justify-content:space-between"><span class="overline" id="kindLabel">FACILITY / ROAD</span><span class="pill" id="progressItem">未学習</span></div><div class="hero-name" id="itemName">東京ドーム</div><div class="hero-sub" id="itemSubtitle"></div><div class="figure"><div id="diagram"></div><div class="figure-note">※ 道路の「関係図」です。向き・縮尺・交差角・実際の建物配置を再現した地図ではありません。</div></div>
-<div class="answer" id="studyAnswer">道の名前</div><div class="row" style="justify-content:space-between"><button class="btn primary" id="coverAnswer">答えを隠して覚える</button><div class="row"><button class="btn green" id="knowBtn">覚えた ✓</button><button class="btn red" id="missBtn">もう一回 ×</button></div></div><div class="graph-title">同じ道路から関連づける</div><div id="links" class="relations"></div><div id="contrast" class="compare" hidden></div></div>
-<div class="panel pad aside"><div class="section-title">この地点の整理</div><div id="details" class="aside-info" style="margin-top:13px"></div><div class="divider"></div><div class="section-title">間違えやすい組み合わせ</div><div id="comparisons" style="margin-top:10px"></div><div class="divider"></div><a id="realMapLink" href="https://www.google.com/maps" target="_blank" rel="noopener" class="btn full" style="display:block;text-align:center">Googleマップで現地確認 ↗</a><p class="tiny muted">Googleマップは場所を確認する補助。暗記は上の関係図で行います。</p></div>
+<div class="quick-guide">① 地点を見る → ② <b>自力で思い出す</b> → ③ 答えを見る → ④「覚えた／もう一回」で記録。<b>北は常に上</b>。答えは問題を切り替えるたびに隠れます。</div><div class="train-grid">
+<div class="panel side" id="studySide"><div class="section-title">学習する対象</div><div class="category-set"><button class="btn active" data-kind="facility">施設 → 通り</button><button class="btn" data-kind="junction">交差点 → 道</button><button class="btn" data-kind="pair">２本の道 → 交差点</button><button class="btn" data-kind="weak">苦手だけ</button></div><input class="search" id="studySearch" placeholder="施設・道路・交差点を検索"><div class="row" style="margin-top:10px"><button class="btn small" id="randomItem">ランダム出題</button><button class="btn small" id="nextItem">次へ</button></div><button class="btn small full toggle-locations" id="toggleStudyList" aria-expanded="false">地点一覧を開く ▾</button><div class="list" id="studyList"></div></div>
+<div class="panel big"><div class="row" style="justify-content:space-between"><span class="overline" id="kindLabel">FACILITY / ROAD</span><span class="pill" id="progressItem">未学習</span></div><div class="hero-name" id="itemName">東京ドーム</div><div class="hero-sub" id="itemSubtitle"></div><div class="figure"><div id="diagram"></div><div class="figure-note"><span class="north-badge">↑ 北固定</span><span>道路の向きは登録地点の座標から推定した<b>概略</b>。実際の曲線・交差角・施設の道路沿いの位置を保証するものではありません。</span></div></div>
+<div class="answer covered" id="studyAnswer">答えを思い出してください</div><div id="studyHint" class="practice-hint" hidden></div><div class="recall-actions"><button class="btn" id="hintBtn">ヒント</button><button class="btn primary" id="coverAnswer">答えを見る</button></div><div class="recall-actions"><button class="btn green" id="knowBtn" disabled>覚えた ✓</button><button class="btn red" id="missBtn" disabled>もう一回 ×</button></div><div class="shortcut-info">PC操作：Space＝答えを見る／隠す、1＝覚えた、2＝もう一回、→＝次へ</div><div class="graph-title">答え合わせのあとに関連づける</div><div id="linkLock" class="locked-panel">答えを見ると、同じ通りの交差点や施設が表示されます。</div><div id="links" class="relations" hidden></div><div id="contrast" class="compare" hidden></div></div>
+<div class="panel pad aside"><div class="section-title">この地点の整理</div><div id="detailLock" class="locked-panel">解答前は道路名を表示しません。先に中央の図を見て答えてください。</div><div id="details" class="aside-info" style="margin-top:13px" hidden></div><div class="divider"></div><div class="section-title">間違えやすい組み合わせ</div><div id="comparisons" style="margin-top:10px" hidden></div><div class="divider"></div><a id="realMapLink" href="https://www.google.com/maps" target="_blank" rel="noopener" class="btn full" style="display:block;text-align:center">Googleマップで現地確認 ↗</a><p class="tiny muted">Googleマップは場所を確認する補助。暗記は上の関係図で行います。</p></div>
 </div></section>
-<section id="roads"><div class="intro"><div><h1>通りを軸に、施設と交差点を結ぶ。</h1><p>その通りに関係する場所だけを表示。39か所のピンを同時に表示しません。</p></div></div><div class="road-grid"><div class="panel"><div class="pad"><input class="search" id="roadSearch" placeholder="環七・晴海・永代など"></div><div class="road-list" id="roadList"></div></div><div class="panel pad"><h2 class="road-heading" id="roadTitle">環七通り</h2><div class="tagline" id="roadSub">道路別・記憶マップ</div><div class="road-callout" id="roadExplain">同じ道路でつながる交差点と施設をまとめます。表示順は走行順ではありません。</div><div class="row"><a id="roadGoogle" target="_blank" rel="noopener" class="btn">Googleマップで道路名を検索 ↗</a><button class="btn" id="roadQuiz">この道の交差点を練習</button></div><div class="divider"></div><div class="section-title">交差する道路 → 交差点</div><div id="roadJ" style="margin-top:10px"></div><div class="section-title" style="margin:20px 0 10px">この道路に関連する施設</div><div id="roadF"></div></div></div></section>
+<section id="roads"><div class="intro"><div><h1>通りを軸に、施設と交差点を結ぶ。</h1><p>その通りに関係する場所だけを表示。39か所のピンを同時に表示しません。</p></div></div><div class="road-grid"><div class="panel"><div class="pad"><input class="search" id="roadSearch" placeholder="環七・晴海・永代など"></div><div class="road-list" id="roadList"></div></div><div class="panel pad"><h2 class="road-heading" id="roadTitle">環七通り</h2><div class="tagline" id="roadSub">道路別・記憶マップ</div><div class="road-callout" id="roadExplain">同じ道路でつながる交差点と施設をまとめます。表示順は走行順ではありません。</div><div class="atlas-shell"><div id="roadAtlas"></div><div class="atlas-note">北を上に固定。●は教材に登録された交差点の参考位置です。道そのものの正確な線形は表していません。</div></div><div class="row"><a id="roadGoogle" target="_blank" rel="noopener" class="btn">Googleマップで道路名を検索 ↗</a><button class="btn" id="roadQuiz">この道の交差点を練習</button></div><div class="divider"></div><div class="section-title">交差する道路 → 交差点</div><div id="roadJ" style="margin-top:10px"></div><div class="section-title" style="margin:20px 0 10px">この道路に関連する施設</div><div id="roadF"></div></div></div></section>
 <section id="exam"><div class="intro"><div><h1>配布プリント形式の○×演習</h1><p>問1〜問15をそれぞれ10問収録。誤りは「訂正の一語」も思い出せるようにします。</p></div></div><div class="panel pad exam-head"><div><label class="key-label" for="sheetSelect">演習プリント</label><select class="select" id="sheetSelect"></select></div><div><label class="key-label" for="sheetMode">出題方法</label><select class="select" id="sheetMode"><option value="sheet">選んだプリントをそのまま</option><option value="mixed">全150問からランダム10問</option><option value="weak">間違えた問題10問</option></select></div><button class="btn primary" id="startExam">新しく10問を出す</button></div><div class="panel sheet"><div class="row" style="justify-content:space-between"><div><b id="sheetTitle">問1</b><div class="tiny muted">○か×を選択。×の場合は訂正を入力（任意）。</div></div><span class="pill" id="examProgress">0 / 10 回答</span></div><div id="examRows" style="margin-top:12px"></div></div><div class="panel footbar" style="margin-top:12px"><div id="scoreMsg" class="muted">10問中7問以上を目標に。</div><button class="btn primary" id="grade">採点する</button></div></section>
 <section id="library"><div class="intro"><div><h1>施設・交差点の辞典</h1><p>「施設名」「通り名」「交差点名」で全文検索。クリックすると関係図へ移ります。</p></div><span class="pill" id="libraryCount">登録地点</span></div><div class="lookup-grid"><div class="panel pad"><input class="search" id="librarySearch" placeholder="例：築地本願寺・晴海・溜池"><div class="category-set"><button class="btn active" data-library="all">すべて</button><button class="btn" data-library="facility">施設</button><button class="btn" data-library="junction">交差点</button><button class="btn" data-library="road">道路</button></div><div class="lookup-items" id="libraryList"></div></div><div class="panel pad"><div class="section-title">取り込みデータと学習履歴</div><p class="muted tiny">提供された配布資料に基づき、施設と幹線道路の対応、交差点で交わる道路を収録。施設によっては前面道路ではなく「周辺の幹線道路」を示します。演習問題の採点結果もここで保存できます。</p><div class="stat" style="margin-top:15px"><span>写真の実物演習</span><b>150問</b></div><div class="stat" style="margin-top:8px"><span>交差点の関係図</span><b id="numJ">46地点</b></div><div class="stat" style="margin-top:8px"><span>施設データ</span><b id="numF">97件</b></div><div class="stat" style="margin-top:8px"><span>覚えた／復習が必要</span><b id="numMem">0 / 0</b></div><div class="divider"></div><div class="row"><button class="btn" id="exportProgress">進捗を書き出す</button><label for="importFile" class="btn" style="cursor:pointer">進捗を読み込む</label><input type="file" id="importFile" accept=".json,application/json" hidden></div><p class="tiny muted">進捗はこのブラウザ内に保存。HTMLファイルの移動やブラウザ変更時は進捗を書き出して移行してください。</p><div class="divider"></div><div class="section-title">道路の混同に注意</div><p class="tiny muted">例：晴海通り×外堀通り＝数寄屋橋、晴海通り×中央通り＝銀座四丁目、晴海通り×昭和通り＝三原橋。これらを同じカード内で対比します。</p></div></div></section>
 <div class="footer">資料ベースの暗記用教材｜道路形状の正確な地図・経路案内ではありません。実際の道順や交通規制は現地・公式地図で確認してください。</div>
@@ -78,7 +103,7 @@ const dirs={facility:'施設 → 通り',junction:'交差点 → ２本の道',p
 const juncs=DATA.junctions,facilities=DATA.facilities.filter(x=>x.roads.length),allRoads=[...new Set([...juncs.flatMap(x=>[x.ring,x.radial]),...DATA.facilities.flatMap(x=>x.roads)])].filter(Boolean).sort((a,b)=>a.localeCompare(b,'ja'));
 const allItems=[...juncs.map(x=>({...x,kind:'junction'})),...facilities.map(x=>({...x,kind:'facility'}))];
 const allSources=[...DATA.junctions,...DATA.facilities];
-let app={tab:'study',kind:'facility',active:facilities.find(x=>x.name==='歌舞伎座')||facilities[0],covered:false,road:'環七通り',search:'',libKind:'all',examRows:[],graded:false};
+let app={tab:'study',kind:'facility',active:facilities.find(x=>x.name==='歌舞伎座')||facilities[0],covered:true,hintShown:false,road:'環七通り',search:'',libKind:'all',examRows:[],graded:false};
 let history={known:{},miss:{},exam:[]};try{let h=JSON.parse(localStorage.getItem('taxi_relations_2026_v1')||'null');if(h&&h.known&&h.miss)history=h}catch(e){}
 function save(){try{localStorage.setItem('taxi_relations_2026_v1',JSON.stringify(history))}catch(e){}}
 function url(place){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place+' 東京都')}
@@ -88,43 +113,125 @@ function rads(x){return [x.ring,x.radial]}
 function qlabel(x,kind=app.kind){if(kind==='facility')return 'この施設の前・周辺の幹線道路は？';if(kind==='pair')return `${x.ring} × ${x.radial} の交差点名は？`;return `${x.name}で交わる２本の幹線道路は？`}
 function answer(x,kind=app.kind){return kind==='facility'?x.roads.join(' ／ '):kind==='pair'?x.name:x.ring+' × '+x.radial}
 function listItems(){let k=app.kind==='weak'?'weak':app.kind==='facility'?'facility':'junction';let arr=k==='facility'?facilities:k==='junction'?juncs:allItems.filter(x=>history.miss[x.id]>0&&!history.known[x.id]);let t=app.search.trim().toLowerCase();if(t)arr=arr.filter(x=>[x.name,x.ward,x.ring,x.radial,...(x.roads||[])].filter(Boolean).join(' ').toLowerCase().includes(t));return arr}
-function pick(x,kind){app.active=x;if(kind&&kind!=='weak')app.kind=kind;app.covered=false;renderStudy()}
-function mark(ok){let id=app.active?.id;if(!id)return;if(ok){history.known[id]=(history.known[id]||0)+1;delete history.miss[id]}else{history.miss[id]=(history.miss[id]||0)+1;delete history.known[id]}save();advance()}
+function pick(x,kind){app.active=x;if(kind&&kind!=='weak')app.kind=kind;app.covered=true;app.hintShown=false;if($('studySide'))$('studySide').classList.remove('expanded');if($('toggleStudyList')){$('toggleStudyList').textContent='地点一覧を開く ▾';$('toggleStudyList').setAttribute('aria-expanded','false')}renderStudy()}
+function mark(ok){let id=app.active?.id;if(!id||app.covered)return;if(ok){history.known[id]=(history.known[id]||0)+1;delete history.miss[id]}else{history.miss[id]=(history.miss[id]||0)+1;delete history.known[id]}save();advance()}
 function advance(){let arr=listItems();if(!arr.length){app.kind='facility';arr=listItems()}let i=arr.findIndex(x=>x.id===app.active.id);pick(arr[(i+1+arr.length)%arr.length]||arr[0],app.kind)}
 function streetColor(i){return i===0?'#277eb3':'#ce6650'}
 function lineText(str,max=28){let s=String(str);return esc(s.length>max?s.substring(0,max)+'…':s)}
-function diagram(x){const hide=app.covered,fac=x.kind==='facility',pair=app.kind==='pair',isJ=!fac,heading=fac?'施設に対応する幹線道路':'交わる道路の名前';let roads=fac?x.roads:[x.ring,x.radial];let svg=`<svg viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(heading)}" style="background:#f8fbfc"><defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#e9f0f4" stroke-width="1"/></pattern></defs><rect x="0" y="0" width="780" height="420" fill="url(#grid)"/>`;
- if(fac){
-   let y=285;
-   svg+=`<path d="M-10 ${y}H790" stroke="#b3c6d2" stroke-width="64"/><path d="M-10 ${y}H790" stroke="#f9fbfc" stroke-width="52"/><path d="M-10 ${y}H790" stroke="${streetColor(0)}" stroke-width="12" stroke-linecap="round"/><rect x="235" y="54" width="310" height="145" rx="13" fill="#fff" stroke="#8baabe" stroke-width="3"/><path d="M235 95H545M270 54V95M510 54V95" stroke="#d3e2e9" stroke-width="3"/><text x="390" y="142" text-anchor="middle" font-weight="850" font-size="${x.name.length>14?22:28}" fill="#1b394d">${lineText(x.name,24)}</text><text x="390" y="175" text-anchor="middle" font-size="16" fill="#75909c">施設</text><path d="M390 199V265" stroke="#366779" stroke-width="3" stroke-dasharray="5 7"/><path d="M381 253L390 266 399 253" fill="none" stroke="#366779" stroke-width="3"/>`;
-   svg+=`<rect x="160" y="304" width="460" height="62" rx="12" fill="#fff" stroke="#d6e4e9"/><text x="390" y="345" text-anchor="middle" font-size="25" font-weight="850" fill="#277eb3">${hide?'？？？（道路名を思い出す）':lineText(roads[0]||'資料に道路名なし',23)}</text>`;
-   if(roads.length>1)svg+=`<rect x="215" y="379" width="350" height="33" rx="9" fill="#e5f1f4"/><text x="390" y="402" text-anchor="middle" font-size="16" font-weight="750" fill="#396b79">${hide?'別の関連道路も思い出す':lineText(roads.slice(1).join(' ／ '),24)}</text>`;
+function directionData(x,road,which){
+ // Approximate north-oriented geometry from positions of other registered intersections on the same road.
+ // When there are too few valid nearby points, use an explicitly illustrative corridor direction.
+ const fallback={
+ '中央通り':0,'新宿通り':83,'内堀通り':9,'外堀通り':72,'桜田通り':6,'永代通り':77,
+ '六本木通り':64,'日比谷通り':2,'山手通り':4,'甲州街道':75,'青梅街道':74,
+ '川越街道':47,'駒沢通り':74,'環七通り':12,'環八通り':6,'第二京浜通り':15,
+ '晴海通り':61,'玉川通り':56,'第一京浜通り':17,'井の頭通り':72,
+ '新青梅街道':78,'世田谷通り':70,'水戸街道':54,'尾久橋通り':4,'京葉通り':78,
+ '京葉道路':78,'明治通り':10,'外苑西通り':9,'本郷通り':14,'外苑東通り':9,
+ '青山通り':58,'中野通り':2,'方南通り':68,'清澄通り':3,'三ツ目通り':2,
+ '目黒通り':75,'新大橋通り':74,'昭和通り':5,'白山通り':7,'靖国通り':74,
+ '清洲橋通り':7,'平和橋通り':0,'千葉街道':75,'蔵前橋通り':77
+ };
+ const base=fallback[road]??(which===0?5:77),p=DATA.coords[x.name];
+ if(!p)return {angle:base,estimated:true};
+ const P=juncs.filter(q=>q.name!==x.name&&DATA.coords[q.name]&&[q.ring,q.radial].some(r=>matchesRoad(r,road))).map(q=>{
+ const a=DATA.coords[q.name];const dx=(a[1]-p[1])*91,dy=(a[0]-p[0])*111;
+ return {dx,dy,dist:Math.hypot(dx,dy)};
+ }).filter(q=>q.dist>.08).sort((a,b)=>a.dist-b.dist);
+ // Local tangent from nearest known crossing; reject points beyond 8km that might represent different road sections.
+ const nearby=P.find(q=>q.dist<8);
+ if(!nearby)return {angle:base,estimated:true};
+ let v=nearby;
+ // Check another nearby point across this crossing to obtain a tangent rather than a single connection.
+ const opposite=P.find(q=>q.dist<9&&q!==nearby&&q.dx*nearby.dx+q.dy*nearby.dy < -0.1*q.dist*nearby.dist);
+ if(opposite)v={dx:nearby.dx-opposite.dx,dy:nearby.dy-opposite.dy};
+ let a=Math.atan2(v.dx,v.dy)*180/Math.PI;
+ // Line angle is modulo 180. Coordinates remain mapped with east right and north up.
+ return {angle:a,estimated:false};
+}
+function lineGeo(angle,color){const rad=angle*Math.PI/180,dx=Math.sin(rad)*690,dy=-Math.cos(rad)*690;
+ const x1=390-dx,y1=210-dy,x2=390+dx,y2=210+dy;
+ return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9aafbb" stroke-width="53"/><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#f9fcfd" stroke-width="43"/><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="11" stroke-linecap="round"/>`}
+function pill(x,y,w,tone,title){return `<rect x="${x}" y="${y}" width="${w}" height="43" rx="10" fill="#fff" stroke="${tone}" stroke-width="2"/><text x="${x+w/2}" y="${y+28}" font-size="20" text-anchor="middle" font-weight="850" fill="${tone}">${lineText(title,21)}</text>`}
+function diagram(x){const hidden=app.covered,fac=x.kind==='facility',pair=app.kind==='pair'&&!fac,roads=fac?x.roads:[x.ring,x.radial],p1=directionData(x,roads[0],0),p2=directionData(x,roads[1],1);
+ let html=`<svg viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="北を上に固定した道路方位の概略図"><defs><pattern id="gridN" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#e2edf2" stroke-width="1"/></pattern></defs><rect width="780" height="420" fill="#f7fafb"/><rect width="780" height="420" fill="url(#gridN)"/>`;
+ html+=`<g><rect x="642" y="15" width="121" height="72" rx="14" fill="#fff" stroke="#bcd2df"/><path d="M703 65V37M696 44L703 34 710 44" stroke="#c14b42" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="732" y="50" font-weight="850" fill="#244b63" font-size="18">北</text><text x="702" y="79" text-anchor="middle" fill="#728d9c" font-size="10">常に上</text></g>`;
+ if(fac){html+=lineGeo(p1.angle,'#2676ad');
+  html+=`<rect x="190" y="124" width="400" height="138" rx="18" fill="white" stroke="#a3b8c6" stroke-width="3"/><path d="M190 176H590" stroke="#e3ebf0" stroke-width="2"/><text x="390" y="161" text-anchor="middle" font-size="13" font-weight="800" fill="#678293">対象施設</text><text x="390" y="219" text-anchor="middle" font-size="${x.name.length>13?23:31}" font-weight="880" fill="#203f56">${lineText(x.name,22)}</text>`;
+  html+=pill(200,318,380,'#1f6b9b',hidden?'道路名 ？':roads.join(' ／ ')||'記載なし');
  }else{
-   svg+=`<path d="M-20 210H800" stroke="#c4d4de" stroke-width="67"/><path d="M-20 210H800" stroke="#f7fafb" stroke-width="48"/><path d="M-20 210H800" stroke="#277eb3" stroke-width="14" stroke-linecap="round"/>`;
-   svg+=`<path d="M390 -20V440" stroke="#cfdae2" stroke-width="73"/><path d="M390 -20V440" stroke="#f7fafb" stroke-width="53"/><path d="M390 -20V440" stroke="#c86d52" stroke-width="14" stroke-linecap="round"/>`;
-   svg+=`<rect x="35" y="147" rx="9" width="310" height="48" fill="#fff" stroke="#bdd3df"/><text x="190" y="179" text-anchor="middle" font-size="22" font-weight="820" fill="#226fa2">${lineText(x.ring,17)}</text>`;
-   svg+=`<rect x="420" y="38" rx="9" width="318" height="50" fill="#fff" stroke="#ebc9ba"/><text x="579" y="72" text-anchor="middle" font-size="22" font-weight="820" fill="#af583e">${lineText(x.radial,16)}</text>`;
-   svg+=`<circle cx="390" cy="210" r="59" fill="#fff" stroke="#20485a" stroke-width="5"/><text x="390" y="218" text-anchor="middle" font-weight="900" fill="#183e57" font-size="${x.name.length>8?17:25}">${hide&&pair?'？':lineText(x.name,16)}</text><rect x="282" y="317" rx="20" width="216" height="44" fill="#eaf3f8"/><text x="390" y="346" text-anchor="middle" font-weight="750" fill="#427b94" font-size="18">${hide&&pair?'交差点名は？':'交差点'}</text>`;
+  let a1=p1.angle,a2=p2.angle;
+  // If sparse source positions make the two axes appear nearly parallel, distinguish them visually,
+  // while clearly labeling this as a conceptual compass-oriented sketch.
+  const delta=Math.abs((((a1-a2)%180)+270)%180-90);
+  if(Math.abs(Math.sin((a1-a2)*Math.PI/180))<0.30)a2+=30;
+  html+=lineGeo(a1,'#2778ac')+lineGeo(a2,'#ca7357');
+  html+=`<circle cx="390" cy="210" r="70" fill="#fff" stroke="#24495f" stroke-width="4"/><text x="390" y="199" text-anchor="middle" fill="#6a8898" font-size="12" font-weight="800">交差点</text><text x="390" y="234" text-anchor="middle" fill="#1d425b" font-size="${x.name.length>9?16:24}" font-weight="900">${hidden&&pair?'？':lineText(x.name,13)}</text>`;
+  html+=pill(16,82,290,'#22689d',hidden&&!pair?'環状側の道路 ？':x.ring);
+  html+=pill(449,308,311,'#aa6149',hidden&&!pair?'放射側の道路 ？':x.radial);
  }
- return svg+'</svg>'}
+ html+=`<text x="21" y="392" fill="#79919f" font-size="14">東 →　　概略の道路方位（北上固定）</text>`;
+ return html+'</svg>';
+}
 const contrastGroups=[['環七通り','川越街道','板橋中央陸橋','山手通り','川越街道','熊野町'],['環七通り','甲州街道','大原','山手通り','甲州街道','初台'],['環七通り','玉川通り','上馬','環八通り','玉川通り','瀬田'],['外堀通り','晴海通り','数寄屋橋','中央通り','晴海通り','銀座四丁目'],['晴海通り','昭和通り','三原橋','晴海通り','新大橋通り','築地四丁目'],['外堀通り','新宿通り','四谷見附','山手通り','青梅街道','中野坂上']];
 function renderContrast(x){let n=x.name,r=x.roads?.[0]||x.ring;let c=contrastGroups.find(a=>a.includes(n)||a.includes(r));let box=$('contrast');if(!c){box.hidden=true;return}box.hidden=false;box.innerHTML='<b>要注意：混同しやすい２組</b><div>'+esc(c[0])+' × '+esc(c[1])+' → <strong>'+esc(c[2])+'</strong></div><div>'+esc(c[3])+' × '+esc(c[4])+' → <strong>'+esc(c[5])+'</strong></div>'}
 function clickRel(x){pick(x,x.kind==='facility'?'facility':'junction')}
 function relationButton(x,detail){let b=document.createElement('button');b.className='relation';b.innerHTML='<b>'+esc(x.name)+'</b>'+ (detail?'<br><span class="tiny">'+esc(detail)+'</span>':'');b.onclick=()=>clickRel(x);return b}
-function renderStudy(){let candidates=listItems();if(!candidates.find(x=>x.id===app.active?.id)){app.active=candidates[0]||allItems[0]};let x=app.active;if(!x)return;qa('[data-kind]').forEach(b=>b.classList.toggle('active',b.dataset.kind===app.kind));$('kindLabel').textContent=(x.kind==='facility'?'BUILDING / STREET':app.kind==='pair'?'TWO STREETS / JUNCTION':'JUNCTION / STREETS');$('itemName').textContent=x.name;$('itemSubtitle').textContent=qlabel(x);$('studyAnswer').textContent=app.covered?'答えを思い出してから「答えを見る」を押してください':answer(x,x.kind==='facility'?'facility':app.kind);$('studyAnswer').classList.toggle('covered',app.covered);$('coverAnswer').textContent=app.covered?'答えを見る':'答えを隠して覚える';$('diagram').innerHTML=diagram(x);$('progressItem').textContent=history.known[x.id]?'覚えた '+history.known[x.id]+'回':history.miss[x.id]?'復習 '+history.miss[x.id]+'回':'未学習';$('studystat').textContent=`習得 ${Object.keys(history.known).length} / 要復習 ${Object.keys(history.miss).length}`;
- let list=$('studyList');list.innerHTML='';candidates.slice(0,110).forEach(y=>{let b=document.createElement('button');b.className='item'+(y.id===x.id?' active':'');b.innerHTML='<span>'+esc(y.name)+'</span><small>'+(history.known[y.id]?'✓':history.miss[y.id]?'×':'')+'</small>';b.onclick=()=>pick(y,y.kind==='facility'?'facility':app.kind==='pair'?'pair':'junction');list.append(b)});if(!candidates.length)list.innerHTML='<div class="empty">対象はありません</div>';
- let roads=x.kind==='facility'?x.roads:[x.ring,x.radial];$('links').innerHTML='';let other=allItems.filter(y=>y.id!==x.id&&(y.kind==='facility'?y.roads.some(r=>roads.some(t=>matchesRoad(r,t))):[y.ring,y.radial].some(r=>roads.some(t=>matchesRoad(r,t)))));other.slice(0,15).forEach(y=>$('links').append(relationButton(y,y.kind==='facility'?y.roads.join('・'):y.ring+' × '+y.radial)));
+function renderStudy(){
+ let candidates=listItems();if(!candidates.find(x=>x.id===app.active?.id))app.active=candidates[0]||allItems[0];let x=app.active;if(!x)return;
+ let hidden=app.covered,isPair=app.kind==='pair'&&x.kind!=='facility';
+ qa('[data-kind]').forEach(b=>b.classList.toggle('active',b.dataset.kind===app.kind));
+ $('kindLabel').textContent=(x.kind==='facility'?'BUILDING / STREET':isPair?'TWO STREETS / JUNCTION':'JUNCTION / STREETS');
+ $('itemName').textContent=isPair?`${x.ring} × ${x.radial}`:x.name;
+ $('itemSubtitle').textContent=qlabel(x);
+ $('studyAnswer').textContent=hidden?'頭の中で答えを言ってから、答えを見る':answer(x,x.kind==='facility'?'facility':isPair?'pair':'junction');
+ $('studyAnswer').classList.toggle('covered',hidden);
+ $('coverAnswer').textContent=hidden?'答えを見る':'答えを隠す';
+ $('knowBtn').disabled=hidden;$('missBtn').disabled=hidden;
+ $('hintBtn').disabled=!hidden;
+ $('studyHint').hidden=!app.hintShown||!hidden;
+ $('studyHint').textContent=app.hintShown?hintFor(x):'';
+ $('diagram').innerHTML=diagram(x);
+ $('progressItem').textContent=history.known[x.id]?'覚えた '+history.known[x.id]+'回':history.miss[x.id]?'復習 '+history.miss[x.id]+'回':'未学習';
+ $('studystat').textContent=`習得 ${Object.keys(history.known).length} / 要復習 ${Object.keys(history.miss).length}`;
+ let list=$('studyList');list.innerHTML='';candidates.slice(0,110).forEach(y=>{let b=document.createElement('button');b.className='item'+(y.id===x.id?' active':'');let label=isPair&&y.kind!=='facility'?`${y.ring} × ${y.radial}`:y.name;b.innerHTML='<span>'+esc(label)+'</span><small>'+(history.known[y.id]?'✓':history.miss[y.id]?'×':'')+'</small>';b.onclick=()=>pick(y,y.kind==='facility'?'facility':app.kind==='pair'?'pair':'junction');list.append(b)});
+ if(!candidates.length)list.innerHTML='<div class="empty">対象はありません</div>';
+ $('links').hidden=hidden;$('linkLock').hidden=!hidden;$('details').hidden=hidden;$('detailLock').hidden=!hidden;$('comparisons').hidden=hidden;
+ $('contrast').hidden=true;
+ if(hidden){$('links').innerHTML='';$('details').innerHTML='';$('comparisons').innerHTML='';$('realMapLink').textContent='Googleマップで位置と角度を確認 ↗';$('realMapLink').href=url(x.place||x.name);return}
+ let roads=x.kind==='facility'?x.roads:[x.ring,x.radial];$('links').innerHTML='';let other=allItems.filter(y=>y.id!==x.id&&(y.kind==='facility'?y.roads.some(r=>roads.some(t=>matchesRoad(r,t))):[y.ring,y.radial].some(r=>roads.some(t=>matchesRoad(r,t)))));
+ other.slice(0,15).forEach(y=>$('links').append(relationButton(y,y.kind==='facility'?y.roads.join('・'):y.ring+' × '+y.radial)));
  if(!other.length)$('links').innerHTML='<span class="tiny muted">同じ道路の登録地点はありません</span>';
  let details='<div class="info-block"><span class="key-label">'+(x.kind==='facility'?'対応する幹線道路':'２本の幹線道路')+'</span><div class="large-answer">'+esc(roads.join(' × '))+'</div></div><div class="info-block"><span class="key-label">所在エリア</span>'+esc(x.ward||'資料に記載なし')+'</div>';
- details+='<div class="info-block"><span class="key-label">理解するポイント</span>'+(x.kind==='facility'?'施設を覚えたら、その通りを選んで関連する交差点を確認する。':'交差点名だけでなく、２本の道路の組合せまで言えるようにする。')+'</div>';
+ details+='<div class="info-block"><span class="key-label">覚え方</span>'+(x.kind==='facility'?'施設→通り→同じ道にある交差点の順で連想する。':'交差点の名前と道路の組み合わせを双方向に言えるようにする。')+'</div>';
  $('details').innerHTML=details;$('realMapLink').href=url(x.place||x.name);
  renderContrast(x);$('comparisons').innerHTML=contrastGroups.slice(0,4).map(c=>`<div class="relation" style="display:block;margin-bottom:7px;cursor:default">${esc(c[0])} × ${esc(c[1])}<br><strong>${esc(c[2])}</strong></div>`).join('');
 }
-qa('[data-kind]').forEach(b=>b.onclick=()=>{app.kind=b.dataset.kind;app.search='';$('studySearch').value='';let xs=listItems();if(xs[0])app.active=xs[0];app.covered=false;renderStudy()});
-$('studySearch').oninput=e=>{app.search=e.target.value;renderStudy()};$('randomItem').onclick=()=>{let l=listItems();if(l.length)pick(l[Math.floor(Math.random()*l.length)],app.kind)};$('nextItem').onclick=advance;$('coverAnswer').onclick=()=>{app.covered=!app.covered;renderStudy()};$('knowBtn').onclick=()=>mark(true);$('missBtn').onclick=()=>mark(false);
+function hintFor(x){
+ if(x.kind==='facility'){let ang=Math.abs(directionData(x,x.roads[0],0).angle)%180;const way=(ang<27||ang>153)?'南北寄り':(ang>63&&ang<117)?'東西寄り':'斜め方向';return `ヒント：${x.ward||'東京都'}。通りは概ね${way}に延びています。`;}
+ if(app.kind==='pair')return `ヒント：${x.ward||'東京23区'}。北を上にした２本の道の交わりを思い浮かべましょう。`;
+ return `ヒント：${x.ward||'東京都'}にある交差点です。環状側と放射側を１本ずつ思い出しましょう。`;
+}
+qa('[data-kind]').forEach(b=>b.onclick=()=>{app.kind=b.dataset.kind;app.search='';$('studySearch').value='';let xs=listItems();if(xs[0])app.active=xs[0];app.covered=true;app.hintShown=false;renderStudy()});
+$('toggleStudyList').onclick=()=>{let b=$('studySide').classList.toggle('expanded');$('toggleStudyList').textContent=b?'地点一覧を閉じる ▴':'地点一覧を開く ▾';$('toggleStudyList').setAttribute('aria-expanded',String(b))};$('studySearch').oninput=e=>{app.search=e.target.value;renderStudy();if(e.target.value.trim()){$('studySide').classList.add('expanded');$('toggleStudyList').textContent='地点一覧を閉じる ▴';$('toggleStudyList').setAttribute('aria-expanded','true')}};$('randomItem').onclick=()=>{let l=listItems();if(l.length)pick(l[Math.floor(Math.random()*l.length)],app.kind)};$('nextItem').onclick=advance;$('coverAnswer').onclick=()=>{app.covered=!app.covered;if(app.covered)app.hintShown=false;renderStudy()};$('hintBtn').onclick=()=>{app.hintShown=!app.hintShown;renderStudy()};$('knowBtn').onclick=()=>mark(true);$('missBtn').onclick=()=>mark(false);
 function roadMembers(r){return {js:juncs.filter(x=>[x.ring,x.radial].some(y=>matchesRoad(y,r))),fs:facilities.filter(x=>x.roads.some(y=>matchesRoad(y,r)))}}
+function renderRoadAtlas(road){
+ const entries=roadMembers(road).js.filter(q=>DATA.coords[q.name]);
+ const W=780,H=480,lonmin=139.59,lonmax=139.89,latmin=35.565,latmax=35.80;
+ const proj=([lat,lon])=>[50+(lon-lonmin)/(lonmax-lonmin)*(W-100),45+(latmax-lat)/(latmax-latmin)*(H-90)];
+ let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="北を上にした都内交差点位置図"><defs><pattern id="cgrid" width="35" height="35" patternUnits="userSpaceOnUse"><path d="M35 0H0V35" fill="none" stroke="#e2edf3"/></pattern></defs><rect width="${W}" height="${H}" fill="#f7fafb"/><rect width="${W}" height="${H}" fill="url(#cgrid)"/><text x="30" y="32" font-size="16" font-weight="850" fill="#265873">西 ←</text><text x="690" y="32" font-size="16" font-weight="850" fill="#265873">東 →</text><g transform="translate(380 16)"><path d="M0 18V0M-6 7L0 0 6 7" stroke="#bf5147" stroke-width="3" fill="none"/><text x="10" y="14" font-size="14" font-weight="850" fill="#254d65">北</text></g>`;
+ // Every marker uses the stored latitude and longitude; never draw arbitrary rotated route lines.
+ const refs=entries.slice(0,26);
+ for(let i=0;i<refs.length;i++){
+   const q=refs[i],[xx,yy]=proj(DATA.coords[q.name]);let anchor=i%2?'end':'start',shift=i%2?-11:11;
+   svg+=`<circle cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="6.5" fill="#1c769b" stroke="white" stroke-width="2"/><text x="${(xx+shift).toFixed(1)}" y="${(yy-7-(i%3)*4).toFixed(1)}" text-anchor="${anchor}" fill="#244a63" stroke="#f7fafb" stroke-width="3.5" paint-order="stroke" font-weight="700" font-size="13">${lineText(q.name,15)}</text>`;
+ }
+ if(!entries.length)svg+='<text x="390" y="240" text-anchor="middle" font-size="24" fill="#8198a5">位置データ未登録</text>';
+ svg+='</svg>';
+ $('roadAtlas').innerHTML=svg;
+}
 function renderRoads(){let t=$('roadSearch').value.trim();$('roadList').innerHTML='';allRoads.filter(x=>x.includes(t)).forEach(r=>{let b=document.createElement('button');b.className='item'+(matchesRoad(r,app.road)?' active':'');b.textContent=r;b.onclick=()=>{app.road=r;renderRoads()};$('roadList').append(b)});
- let r=app.road,{js,fs}=roadMembers(r);$('roadTitle').textContent=r;$('roadSub').textContent=`${js.length}交差点・${fs.length}施設`; $('roadExplain').innerHTML=`この通りで交わる道と、関連する施設を１画面にまとめます。<br><strong>位置の表示順は実際の走行順・距離ではありません。</strong>`;$('roadGoogle').href=url(r+' 道路');$('roadJ').innerHTML='';$('roadF').innerHTML='';
+ let r=app.road,{js,fs}=roadMembers(r);renderRoadAtlas(r);$('roadTitle').textContent=r;$('roadSub').textContent=`${js.length}交差点・${fs.length}施設`; $('roadExplain').innerHTML=`この通りで交わる道と、関連する施設を１画面にまとめます。<br><strong>位置の表示順は実際の走行順・距離ではありません。</strong>`;$('roadGoogle').href=url(r+' 道路');$('roadJ').innerHTML='';$('roadF').innerHTML='';
  js.forEach(x=>{let other=matchesRoad(x.ring,r)?x.radial:x.ring;let b=document.createElement('button');b.className='linkpath';b.innerHTML=`<div><small>${esc(r)} × ${esc(other)}</small><strong>${esc(x.name)}</strong></div><span class="type-tag">交差点</span>`;b.onclick=()=>{app.kind='junction';pick(x,'junction');go('study')};$('roadJ').append(b)});fs.forEach(x=>{let b=document.createElement('button');b.className='linkpath';b.innerHTML=`<div><small>${esc(x.ward)}</small><strong>${esc(x.name)}</strong></div><span class="type-tag facility">施設</span>`;b.onclick=()=>{app.kind='facility';pick(x,'facility');go('study')};$('roadF').append(b)});if(!js.length)$('roadJ').innerHTML='<p class="muted tiny">登録されている交差点はありません。</p>';if(!fs.length)$('roadF').innerHTML='<p class="muted tiny">登録されている施設はありません。</p>'}
 $('roadSearch').oninput=renderRoads;$('roadQuiz').onclick=()=>{let m=roadMembers(app.road).js;if(m.length){app.kind='pair';pick(m[0],'pair');go('study')}};
 for(let n=1;n<=15;n++){let o=document.createElement('option');o.value=String(n);o.textContent='問'+n;$('sheetSelect').append(o)}
@@ -148,7 +255,7 @@ function renderLibrary(){let t=$('librarySearch').value.trim().toLowerCase();qa(
 $('librarySearch').oninput=renderLibrary;qa('[data-library]').forEach(b=>b.onclick=()=>{app.libKind=b.dataset.library;renderLibrary()});
 $('exportProgress').onclick=()=>{let blob=new Blob([JSON.stringify(history,null,2)],{type:'application/json'}),a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download='東京地理_学習履歴.json';document.body.append(a);a.click();a.remove();URL.revokeObjectURL(u)};
 $('importFile').onchange=async e=>{let f=e.target.files?.[0];if(!f)return;try{let obj=JSON.parse(await f.text());if(!obj||typeof obj.known!=='object'||typeof obj.miss!=='object')throw Error('形式が違います');history={known:obj.known,miss:obj.miss,exam:Array.isArray(obj.exam)?obj.exam:[]};save();renderLibrary();alert('学習履歴を読み込みました')}catch(err){alert('読み込みに失敗しました：'+err.message)}};
-$('roadGoogle').href=url('環七通り');renderStudy();renderRoads();renderLibrary();
+document.addEventListener('keydown',e=>{if(app.tab!=='study'||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;if(e.code==='Space'){e.preventDefault();app.covered=!app.covered;if(app.covered)app.hintShown=false;renderStudy()}else if(e.key==='1'&&!app.covered)mark(true);else if(e.key==='2'&&!app.covered)mark(false);else if(e.key==='ArrowRight')advance()});$('roadGoogle').href=url('環七通り');renderStudy();renderRoads();renderLibrary();
 </script>
 <script>
 (()=>{
